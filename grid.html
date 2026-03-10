@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <style>
+        .grid-container{
+            display:grid;
+            grid-template-columns: 50px 50px 50px;
+            grid-template-rows: 50px 50px 50px;    
+            gap:5px;
+        } 
+        #box1{
+            grid-row-start:1;
+            grid-row-end:4;
+        }
+        #box4{
+            grid-column-start: 2;
+             grid-column-end: 4;
+        }
+         .box{
+            background: lightgreen;
+            padding:40px;
+            text-align:center;
+            font-weight:bold;
+        }
+        
+        .grid-container .box{
+            border:2px solid lightcoral;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-container">
+        <div class="box" id="box1">box1</div>
+        <div class="box">box2</div>
+        <div class="box">box3</div>
+         <div class="box" id="box4">box4</div>
+          <div class="box">box5</div>
+           <div class="box">box6</div>
+     
+</body>
+</html>

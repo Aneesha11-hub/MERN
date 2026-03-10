@@ -14,7 +14,7 @@ exports.createTask=async(req,res)=>{
         console.log(error)
     }
 }
-exports.getAllTAsk=async(req,res)=>{
+exports.getAllTask=async(req,res)=>{
     try{
         const tasks=await Task.find({user:req.user.id})
         res.json(tasks)
@@ -23,3 +23,17 @@ exports.getAllTAsk=async(req,res)=>{
         res.status(500).json(error)
     }
 }
+    exports.getTaskById=async(req,res)=>{
+        try{
+            const task=await Task.findOne({
+                _id:req.params.id,
+                user:req.user.id
+            })
+            if(!task){
+                res.status(404).json({msg:"Task not exist"})
+            }
+            res.json(task)
+        }catch(error){
+            res.status(500).json(error)
+        }
+    }

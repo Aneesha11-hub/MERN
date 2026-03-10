@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Rock paper Scissor</h1>
+    <button onclick="play('rock')">🪨</button>
+    <button onclick="play('paper')">📃</button>
+    <button onclick="play('Scissor')">✂️</button>
+    <h3 id="result"></h3>
+    <h3 id="score"></h3>
+    <script>
+            let userScore=0
+            let computerScore=0
+            function play(userChoice){
+                const choices=['rock','paper','scissor'];
+                let computerChoice=choices[Math.floor(Math.random()*3)];
+                let resultText="";
+                if(computerChoice==userChoice){
+                    resultText="It's a Draw";
+                }
+                else if(
+                    (userChoice=='rock' &&  computerChoice=='scissor')||
+                (userChoice=='paper' && computerChoice=='rock')||
+                (userChoice=='scissor' && computerChoice=='paper')
+            ){
+                    resultText='you won🏆'
+                    userScore++;
+                }
+                else{
+                    resultText='you lose☹️'
+                    computerScore++;
+                }
+                document.getElementById('result').
+                innerText=resultText;
+                document.getElementById('score').
+                innerText=`Your Score ${userScore}
+                computerScore ${computerScore}`;
+
+            }
+    </script>
+</body>
+</html>
