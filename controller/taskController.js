@@ -37,3 +37,22 @@ exports.getAllTask=async(req,res)=>{
             res.status(500).json(error)
         }
     }
+    exports.updateTask=async(req,res)=>{
+        try{
+            const task=await Task.findOneAndUpdate
+                ({_id:req.params.id,user:req.user.id},
+                {
+                    title:req.body.title,
+                    description:req.body.description,
+                    status:req.body.status
+                },
+                {new:true}
+            )
+            if(!task){
+                res.status(404).json({msg:"Task not exist"})
+            }
+            res.json({msg:'task updated'},task)
+        }catch(error){
+            res.status(500).json(error)
+        }
+    }
